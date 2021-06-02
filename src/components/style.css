@@ -1,0 +1,200 @@
+html {
+    -ms-text-size-adjust: 100%;
+    -webkit-text-size-adjust: 100%;
+    font: 112.5%/1.45em georgia, serif, sans-serif;
+    box-sizing: border-box;
+    overflow-y: scroll;
+    background-color: hsla(0, 0%, 0%, 0.8);
+  }
+  body {
+    margin: 0;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    color: hsla(0, 0%, 0%, 0.8);
+    font-family: georgia, serif;
+    font-weight: normal;
+    word-wrap: break-word;
+    font-kerning: normal;
+    -moz-font-feature-settings: "kern", "liga", "clig", "calt";
+    -ms-font-feature-settings: "kern", "liga", "clig", "calt";
+    -webkit-font-feature-settings: "kern", "liga", "clig", "calt";
+    font-feature-settings: "kern", "liga", "clig", "calt";
+    background-color: hsla(0, 0%, 0%, 0.8);
+  }
+
+  .index{
+    background-color: hsla(0, 0%, 0%, 0.8);
+  }
+
+
+ .digits{
+     font-size: 40px;
+     color:#0D6EfD ;
+ }
+
+ .nav{
+     justify-content: center;
+ }
+
+ .nav-item{
+     margin-left: 2rem;
+     margin-right: 2rem;
+     display: inline-flex;
+ }
+
+ 
+ .tab-content{    
+     text-align: center;
+     margin-top: 8rem;
+ }
+
+ .timerinput{
+     width: 3rem;
+     text-align: center;
+     border: none;
+     font-size: 40px;
+     outline: none;
+     background-color: hsla(0, 1%, 20%, 0.8);
+     color:#0D6EfD ;
+ }
+
+ .timercd{
+    color:#0D6EfD ; 
+ }
+
+ .colan{
+     font-size: 40px;
+     color:#0D6EfD ;
+ }
+
+ .start{
+     font-size: 2.5rem;
+     margin:2rem;
+     color: green;
+     cursor: pointer;
+ }
+ 
+ .start:hover{
+     font-size: 3rem;
+     color: #0D6EfD;
+ }
+
+ .stop{
+    font-size: 2.5rem;
+    margin:2rem;
+    color: rgb(216, 77, 77);
+    cursor: pointer;
+}
+.stop:hover{
+    font-size: 3rem;
+    color: #0D6EfD;
+}
+
+.reset{
+    font-size: 2.5rem;
+    margin:2rem;
+    color: rgb(161, 157, 157);
+    cursor: pointer;
+}
+.reset:hover{
+    font-size: 3rem;
+    color: #0D6EfD;
+}
+
+.nav-link{
+    font-size: 2rem;
+    color: rgb(161, 157, 157);
+    background-color: gold;
+}
+
+.nav-link:hover{
+    color: rgb(216, 77, 77);
+    transition: 1s;
+}
+
+.alarm{
+    color: #0D6EfD;
+}
+
+.alarminput{
+    background-color: hsla(0, 1%, 20%, 0.8);
+    outline: none;
+    margin-top: 2rem;
+    color: #0D6EfD;
+    border-bottom:#0D6EfD;
+    border:none;
+    font-size: 30px;
+    width: 7.5rem;
+}
+
+.time{
+    color: rgb(216, 77, 77);
+    font-size:40px;
+}
+.bell{
+    font-size: 2rem;
+    color: rgb(185, 146, 61);
+    transform: rotate(-20deg);
+}
+
+.bell:hover{
+    transform: rotate(20deg);
+}
+
+.alarmsg{
+    font-size:30px;
+    margin-top: 2rem;
+    color: rgb(70, 207, 57);
+}
+
+#btnInsert{
+    background-color: hsla(0, 1%, 20%, 0.8);
+    border:none;
+}
+
+@media only screen and (max-width: 415px){
+
+    .nav-item{
+        margin:0;
+        margin-top: 1rem;
+        margin-left: 0;
+    }
+
+    .nav{
+        margin: 0;
+    }
+
+    .nav-link{
+        font-size: 18px;
+        margin: 0;
+        padding: 0;
+    }
+
+    .nav-link:hover{
+        font-size: 18px;
+    }
+
+    .container{
+        margin: 0;
+    }
+
+    .tab-content{
+        margin:0;
+        margin-top: 5rem;
+    }
+
+    .timerbtn{
+        margin: -2px;
+    }
+
+    .bell{
+        color: rgb(185, 146, 61);
+        transform: rotate(-20deg);
+    }
+    
+    .bell:hover{
+        transform: rotate(20deg);
+    }
+
+
+}
