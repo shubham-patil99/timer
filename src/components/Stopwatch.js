@@ -1,5 +1,5 @@
 import React from 'react';
-import { useState, useRef } from 'react';
+import { useState } from 'react';
 import "./style.css"
 import Swtimer from "./Swtimer";
 import ControlButtons from "./ControlButtons";
