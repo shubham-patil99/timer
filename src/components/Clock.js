@@ -1,4 +1,4 @@
-import * as React from "react"
+import  React from "react"
 import "./style.css"
 import Timer from "../components/Timer"
 import Stopwatch from "../components/Stopwatch"
