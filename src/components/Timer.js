@@ -7,62 +7,34 @@ import { faPauseCircle } from '@fortawesome/free-solid-svg-icons';
 import { faUndoAlt } from '@fortawesome/free-solid-svg-icons';
 
 class Timer extends Component {
-  data;
+ userData;
   constructor(props) {
+    
     super(props);
+    this.timerSubmit = this.onSubmit.bind(this);
     this.inputHandler = this.inputHandler.bind(this);
-    this.timerSubmit = this.timerSubmit.bind(this);
-    this.getData = this.getData.bind(this);
-    this.state = {
-      hours: 0,
-      minutes: 0,
-      seconds:0
-    }
     this.hoursInput = React.createRef();
     this.minutesInput= React.createRef();
     this.secondsInput = React.createRef();
+
+    this.state = {
+      hours: 0,
+      minutes: 0,
+      seconds:0,  
+      time: 0,
+    }
+    
   }
 
   inputHandler = (e) => {
     this.setState({[e.target.name]: e.target.value});
   }
 
-  timerSubmit = (e) => {
-    e.preventDefault()
-   localStorage.setItem('key',JSON.stringify(this.state));
-}
-
-  getData = (e) => {
-    e.preventDefault()
-   console.log( localStorage.getItem('key',JSON.parse(this.state)));
-  }
-
-componentDidMount() {
-  this.data = JSON.parse(localStorage.getItem('key'));
-
-  if (localStorage.getItem('key')) {
-      this.setState({
-          hours: this.data.hours,
-         minutes: this.data.minutes,
-         seconds: this.data.seconds
-  })
-} else {
-  this.setState({
-    hours: '',
-    minutes: '',
-    seconds: ''
-  })
-}
-}
-
-
   convertToSeconds = ( hours, minutes,seconds) => {
     return seconds + minutes * 60 + hours * 60 * 60;
   }
 
-  startTimer = () => {
-    this.timer = setInterval(this.countDown, 1000);
-  }
+
 
   countDown = () => {
     const  { hours, minutes, seconds } = this.state;
@@ -93,6 +65,9 @@ componentDidMount() {
     }
   }
 
+  startTimer = () => {
+    this.timer = setInterval(this.countDown, 1000);
+   }
 
   stopTimer = () => {
     clearInterval(this.timer);
@@ -109,64 +84,103 @@ componentDidMount() {
     this.secondsInput.current.value = "00";
   }
 
+  
+ onSubmit = (e) => {
+    e.preventDefault()
+}
+
+  componentDidMount() {
+  this.UserData = JSON.parse(localStorage.getItem('timer'));
+
+  if (localStorage.getItem('timer')) {
+      this.setState({
+          hours: this.hours,
+         minutes: this.minutes,
+         seconds: this.seconds
+  })
+} else {
+  this.setState({
+    hours: '',
+    minutes: '',
+    seconds: ''
+  })
+}
+}
+
+componentWillUpdate(nextProps, nextState){
+  localStorage.setItem('timer', JSON.stringify(nextState));
+}
+  
+
 
   render() {
     const { hours, minutes, seconds } = this.state;
-
-   const inphr = document.getElementById("inphr");
+  
+ /*
+    const inphr = document.getElementById("inphr");
     const inpmin = document.getElementById("inpmin");
     const btnInsert = document.getElementById("btnInsert");
     const lsOutput = document.getElementById("lsOutput");
 
+       //  window.onload = function(){ 
+        btnInsert.onclick = function() {
+        const key = "shubham";
+        const value = inpmin.value;
+        console.log(inpmin.value)
 
 
-    window.onload = function(){
-    btnInsert.onclick = () => {
-      const key = inphr.value;
-      const value = inpmin.value;
-   
-      if (key && value) {
+        if (key && value) {
           localStorage.setItem(key, value);
-          window.localStorage.reload();
-      }
+
+          for (let i = 0; i < localStorage.length; i++ ){
+            const key = localStorage.key(i);
+            const value = localStorage.getItem(key);
+    
+            lsOutput.innerHTML += `${key}: ${value}<br />`;
+        }
+    // }
+    }
     };
 
-    for (let i = 0; i < localStorage.length; i++ ){
-        const key = localStorage.key(i);
-        const value = localStorage.getItem(key);
-
-        lsOutput.HTML += `${key}: ${value}<br />`;
-    }
-  }
-
+    /*   if (key && value) {
+            localStorage.setItem(key, value);
+           window.localStorage.reload();
+       }
+      
+  
+      for (let i = 0; i < localStorage.length; i++ ){
+          const key = localStorage.key(i);
+          const value = localStorage.getItem(key);
+  
+          lsOutput.innerHTML += `${key}: ${value}<br />`;
+      }
+    } */
     return (
       <div className="App">
-         <div className="inputGroup" onChange={this.timerSubmit}>
+         <from className="inputGroup" onSubmit={this.onSubmit}>
              
             <input id="inphr" className="timerinput" ref={this.hoursInput} type="text" placeholder={"00"}  name="hours"  onChange={this.inputHandler} /><span className="colan">:</span>
            
             <input id="inpmin" className="timerinput" ref={this.minutesInput} type="text"  placeholder={"00"}   name="minutes"  onChange={this.inputHandler} /><span className="colan">:</span>
             
-            <input id="inpsec" className="timerinput"  ref={this.secondsInput} type="text"  placeholder={"00"}  name="seconds"  onChange={this.inputHandler} />
-         </div>
-         <div className="timerbtn" onChange={this.getData}>
+            <input id="inpsec" className="timerinput"  ref={this.secondsInput} type="text"  placeholder={"00"}  name="seconds"  onChange={this.inputHandler} /><br />
+            <button type="submit" onSubmit={this.onSubmit} className="btn btn-primary btn-block"  id="btnInsert" >Save Timer </button>
+         </from>
+         <div className="timerbtn" >
             <FontAwesomeIcon  onClick={this.startTimer} className="start" icon={ faPlayCircle }/>
             <FontAwesomeIcon onClick={this.stopTimer}  className="stop" icon={ faPauseCircle }/>
-            <FontAwesomeIcon onClick={this.resetTimer}  className="reset" icon={ faUndoAlt }/> 
+            <FontAwesomeIcon onClick={this.resetTimer}  className="reset" icon={ faUndoAlt } />
          </div>
          <h1 className="timercd" > {hours}:{minutes}:{seconds} </h1>
 
-          <button  id="btnInsert">submit</button>
-            <label ref={this.hoursInput} id="labelhrs">
-              
-            </label>
+          
                  
 
             <fieldset>
-              <legend>
-                Timer
-              </legend>
-              <div id="lsOutput">
+              <div  >
+                <input className="lsOutput" value={hours} />
+                <input className="lsOutput"  value={minutes} />
+                <input className="lsOutput"  value={seconds} />
 
               </div>
               </fieldset>     
@@ -175,10 +189,6 @@ componentDidMount() {
 
         
     );
-  }
 }
-
-  export default Timer;
-
-
-
+}
+  export default Timer
