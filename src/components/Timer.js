@@ -116,6 +116,46 @@ componentWillUpdate(nextProps, nextState){
   render() {
     const { hours, minutes, seconds } = this.state;
   
+
+    return (
+      <div className="App">
+         <from className="inputGroup" onSubmit={this.onSubmit}>
+             
+            <input id="inphr" className="timerinput" ref={this.hoursInput} type="text" placeholder={"00"}  name="hours"  onChange={this.inputHandler} /><span className="colan">:</span>
+           
+            <input id="inpmin" className="timerinput" ref={this.minutesInput} type="text"  placeholder={"00"}   name="minutes"  onChange={this.inputHandler} /><span className="colan">:</span>
+            
+            <input id="inpsec" className="timerinput"  ref={this.secondsInput} type="text"  placeholder={"00"}  name="seconds"  onChange={this.inputHandler} /><br />
+            <button type="submit" onSubmit={this.onSubmit} className="btn btn-primary btn-block"  id="btnInsert" >Save Timer </button>
+         </from>
+         <div className="timerbtn" >
+            <FontAwesomeIcon  onClick={this.startTimer} className="start" icon={ faPlayCircle }/>
+            <FontAwesomeIcon onClick={this.stopTimer}  className="stop" icon={ faPauseCircle }/>
+            <FontAwesomeIcon onClick={this.resetTimer}  className="reset" icon={ faUndoAlt } />
+         </div>
+         <h1 className="timercd" > {hours}:{minutes}:{seconds} </h1>
+
+          
+                 
+
+            <fieldset>
+              <div  >
+                <input className="lsOutput" value={hours} />
+                <input className="lsOutput"  value={minutes} />
+                <input className="lsOutput"  value={seconds} />
+
+              </div>
+              </fieldset>     
+      </div>
+      
+
+        
+    );
+}
+}
+  export default Timer
+
+
  /*
     const inphr = document.getElementById("inphr");
     const inpmin = document.getElementById("inpmin");
@@ -155,40 +195,3 @@ componentWillUpdate(nextProps, nextState){
           lsOutput.innerHTML += `${key}: ${value}<br />`;
       }
     } */
-    return (
-      <div className="App">
-         <from className="inputGroup" onSubmit={this.onSubmit}>
-             
-            <input id="inphr" className="timerinput" ref={this.hoursInput} type="text" placeholder={"00"}  name="hours"  onChange={this.inputHandler} /><span className="colan">:</span>
-           
-            <input id="inpmin" className="timerinput" ref={this.minutesInput} type="text"  placeholder={"00"}   name="minutes"  onChange={this.inputHandler} /><span className="colan">:</span>
-            
-            <input id="inpsec" className="timerinput"  ref={this.secondsInput} type="text"  placeholder={"00"}  name="seconds"  onChange={this.inputHandler} /><br />
-            <button type="submit" onSubmit={this.onSubmit} className="btn btn-primary btn-block"  id="btnInsert" >Save Timer </button>
-         </from>
-         <div className="timerbtn" >
-            <FontAwesomeIcon  onClick={this.startTimer} className="start" icon={ faPlayCircle }/>
-            <FontAwesomeIcon onClick={this.stopTimer}  className="stop" icon={ faPauseCircle }/>
-            <FontAwesomeIcon onClick={this.resetTimer}  className="reset" icon={ faUndoAlt } />
-         </div>
-         <h1 className="timercd" > {hours}:{minutes}:{seconds} </h1>
-
-          
-                 
-
-            <fieldset>
-              <div  >
-                <input className="lsOutput" value={hours} />
-                <input className="lsOutput"  value={minutes} />
-                <input className="lsOutput"  value={seconds} />
-
-              </div>
-              </fieldset>     
-      </div>
-      
-
-        
-    );
-}
-}
-  export default Timer
