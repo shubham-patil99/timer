@@ -156,42 +156,4 @@ componentWillUpdate(nextProps, nextState){
   export default Timer
 
 
- /*
-    const inphr = document.getElementById("inphr");
-    const inpmin = document.getElementById("inpmin");
-    const btnInsert = document.getElementById("btnInsert");
-    const lsOutput = document.getElementById("lsOutput");
 
-       //  window.onload = function(){ 
-        btnInsert.onclick = function() {
-        const key = "shubham";
-        const value = inpmin.value;
-        console.log(inpmin.value)
-
-
-        if (key && value) {
-          localStorage.setItem(key, value);
-
-          for (let i = 0; i < localStorage.length; i++ ){
-            const key = localStorage.key(i);
-            const value = localStorage.getItem(key);
-    
-            lsOutput.innerHTML += `${key}: ${value}<br />`;
-        }
-    // }
-    }
-    };
-
-    /*   if (key && value) {
-            localStorage.setItem(key, value);
-           window.localStorage.reload();
-       }
-      
-  
-      for (let i = 0; i < localStorage.length; i++ ){
-          const key = localStorage.key(i);
-          const value = localStorage.getItem(key);
-  
-          lsOutput.innerHTML += `${key}: ${value}<br />`;
-      }
-    } */
