@@ -10,7 +10,7 @@ class AlarmClock extends Component {
     constructor(props) {
       super(props);
       this.dataHandler = this.dataHandler.bind(this);
-      this.dataHandler = this.dataHandler.bind(this);
+      this.getData = this.getData.bind(this); 
       this.state = {
         currentTime: '',
         alarmTime: ''
@@ -20,9 +20,9 @@ class AlarmClock extends Component {
 
 
     componentMount() {
-      this.data = JSON.parse(localStorage.getItem('document'));
+      this.data = JSON.parse(localStorage.getItem('Alarm'));
    
-      if (localStorage.getItem('document')) {
+      if (localStorage.getItem('Alarm')) {
           this.setState({
             currentTime: this.data.currentTime,
             alarmTime: this.data.alarmTime
@@ -70,13 +70,14 @@ class AlarmClock extends Component {
 
     dataHandler(e) {
       e.preventDefault()
-     localStorage.setItem('document',JSON.stringify(this.state));
+     localStorage.setItem('Alarm',JSON.stringify(this.state));
   }
 
-  getData = (e) => {
-    localStorage.getItem('document',JSON.parse(this.state));
+  getData(e)  {
+    e.preventDefault()
+    localStorage.getItem('Alarm',JSON.parse(this.state));
   }
-  
+ 
     checkAlarmClock(){
       if(this.state.alarmTime == 'undefined' || !this.state.alarmTime) {
         this.alarmMessage = "";
@@ -95,17 +96,38 @@ class AlarmClock extends Component {
     
 
     render() {
+/*
+      const inpvalue = document.getElementById("inpvalue");
+      const inpmin = document.getElementById("inpmin");
+      const btnInsert = document.getElementById("btnInsert");
+      const lsOutput = document.getElementById("lsOutput");
+  
+      window.onload =function(){
+      btnInsert.onclick = function() {
+          const key = inpvalue.value;
+          const value = inpvalue.value;
+  
+          console.log(key);
+         console.log(value);
 
-     /* const lsOutput = document.getElementById("lsOutput");
-     
-      for (let i=0; i<localStorage.length; i++){
-        const key = localStorage.key(i);
-        const value = localStorage.getItem(key);
 
-        lsOutput.innerHTML += `$(value)`;
-      } */
+      };*/
 
-          
+  
+      /*    if (key && value) {
+            localStorage.setItem(key, value);
+  
+            for (let i = 0; i < localStorage.length; i++ ){
+              const key = localStorage.key(i);
+              const value = localStorage.getItem(key);
+      
+              lsOutput.innerHTML += `${key}: ${value}<br />`;
+          }
+      //  }
+      }
+  };
+
+      */    
 
       return (
         <div className="alarm">
@@ -119,12 +141,15 @@ class AlarmClock extends Component {
           </div>
 
           <form onChange={this.dataHandler} >
-            <input placeholder="Set Alarm" id="inpvalue" className="alarminput" onChange={this.setAlarmTime} type="time" />
-            <button onChange={this.getData} type="button" id="btnInsert"> <FontAwesomeIcon  className="bell" icon={ faBell } /></button>
+            <input id="inpvalue" className="alarminput" onChange={this.setAlarmTime} type="time" />
+            <button type="button" onChange={this.getData} id="btnInsert"> <FontAwesomeIcon  className="bell" icon={ faBell } /></button>
 
           </form>
 
-
+          <fieldset>
+              <legend>History</legend>
+                  <div id="lsOutput"></div>
+          </fieldset>
 
 
 
