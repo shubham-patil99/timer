@@ -91,12 +91,38 @@ class AlarmClock extends Component {
       }   
     }
 
-     
-
-    
-
     render() {
-/*
+
+
+      return (
+        <div className="alarm">
+
+          <div className="time">
+            {this.state.currentTime}
+          </div>
+
+          <div className="alarmsg">
+            {this.alarmMessage}
+          </div>
+
+          <form onChange={this.dataHandler} >
+            <input id="inpvalue" className="alarminput" onChange={this.setAlarmTime} type="time" />
+            <button type="button" onChange={this.getData} id="btnInsert"> <FontAwesomeIcon  className="bell" icon={ faBell } /></button>
+
+          </form>
+
+          <fieldset>
+              <legend>History</legend>
+                  <div id="lsOutput"></div>
+          </fieldset>
+     </div>
+      );
+    }
+  }
+
+  export default AlarmClock
+
+ /*
       const inpvalue = document.getElementById("inpvalue");
       const inpmin = document.getElementById("inpmin");
       const btnInsert = document.getElementById("btnInsert");
@@ -127,88 +153,11 @@ class AlarmClock extends Component {
       }
   };
 
-      */    
-
-      return (
-        <div className="alarm">
-
-          <div className="time">
-            {this.state.currentTime}
-          </div>
-
-          <div className="alarmsg">
-            {this.alarmMessage}
-          </div>
-
-          <form onChange={this.dataHandler} >
-            <input id="inpvalue" className="alarminput" onChange={this.setAlarmTime} type="time" />
-            <button type="button" onChange={this.getData} id="btnInsert"> <FontAwesomeIcon  className="bell" icon={ faBell } /></button>
-
-          </form>
-
-          <fieldset>
-              <legend>History</legend>
-                  <div id="lsOutput"></div>
-          </fieldset>
-
-
-
-
-
-
-
-
-          
-      
-         
-        </div>
-      );
-    }
-  }
-
-  export default AlarmClock
-
-  /*
-     const inpValue = document.getElementById("inpValue");
-      const btnInsert = document.getElementById("btnInsert");
-      const lsOutput = document.getElementById("lsOutput");
-
-      btnInsert.onclick = function()
-      {
-         const value = inpValue.value;
-        
-
-        if (value){
-            localStorage.setItem(value);
-            window.location.reload();
-          }
-        };
-
-          for (let i=0; i<localStorage.length; i++){
-            const key = localStorage.key(i);
-            const value = localStorage.getItem(key);
-   
-            lsOutput.innerHTML += `$(value)`;
-          }
-
-
-
-
-
-
+       
  <fieldset>
               <legend>History</legend>
                   <div onChange={this.dataHandler} id="lsOutput" style={{color:`white`}}></div>
-          </fieldset>
-
-
-
-
-          
-          
-          
-          
-          
+          </fieldset>         
           
           
           
