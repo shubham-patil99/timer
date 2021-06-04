@@ -1,4 +1,4 @@
-import * as React from "react"
+import React from "react"
 import "./style.css"
 import { Component } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
